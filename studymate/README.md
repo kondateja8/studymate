@@ -6,7 +6,7 @@ StudyMate lets you upload one or more PDFs (textbooks, lecture notes, papers), a
 - Conversational Q&A grounded in your PDFs
 - Accurate PDF text extraction and chunking (PyMuPDF)
 - Semantic search with SentenceTransformers embeddings and FAISS
-- LLM answer generation via IBM watsonx Mixtral-8x7B-Instruct
+- LLM answer generation via Hugging Face Inference API (default: Mixtral-8x7B-Instruct)
 - Streamlit UI for local use
 
 #### Quickstart
@@ -32,19 +32,15 @@ streamlit run studymate/app/app.py
 
 4) In the browser, upload PDFs, click Build Index, and start asking questions.
 
-#### IBM watsonx configuration
+#### Hugging Face configuration
 Set the following environment variables (or edit `.env`):
 
 ```bash
-IBM_WATSONX_API_KEY=your_api_key
-IBM_WATSONX_URL=https://us-south.ml.cloud.ibm.com
-# Provide ONE of the following identifiers
-IBM_WATSONX_PROJECT_ID=your_project_id
-# or
-IBM_WATSONX_SPACE_ID=your_space_id
+HF_API_TOKEN=your_hf_token
+HF_TEXT_GEN_MODEL=mistralai/Mixtral-8x7B-Instruct-v0.1
 ```
 
-If watsonx credentials are not provided, the app will still perform retrieval and return the top matching chunks.
+If a token is not provided, the app will still perform retrieval and show the top matching chunks.
 
 #### Data and indexes
 - Built FAISS index and metadata are stored under `studymate/data/` by default.

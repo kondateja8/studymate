@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 from studymate.core.pdf import extract_and_chunk_pdfs
 from studymate.core.embeddings import build_faiss_index, FaissStore, search
-from studymate.models.watsonx import generate_answer
+from studymate.models.hf import generate_answer
 
 
 load_dotenv()
@@ -118,7 +118,7 @@ def qa_view():
             "Answer:"
         )
 
-        with st.status("Generating answer with IBM watsonx...", expanded=True):
+        with st.status("Generating answer with Hugging Face...", expanded=True):
             answer = generate_answer(prompt)
             st.write("Model response ready.")
 
